@@ -1,3 +1,7 @@
+## Проект доступен на gh-pages по ссылке
+
+https://zhannaivashova.github.io/WordWizard/
+
 ## Запуск проекта
 
 - Клонировать репозиторий
