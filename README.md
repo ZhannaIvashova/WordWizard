@@ -1,3 +1,5 @@
+# WordWizard - сервис по изучению английских слов
+
 ## Проект доступен на gh-pages по ссылке
 
 https://zhannaivashova.github.io/WordWizard/
