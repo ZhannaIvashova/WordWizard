@@ -1,14 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './components/Header.jsx'
-import Card from './components/Card.jsx'
-import Footer from './components/Footer.jsx'
-import './index.css'
+import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Header />
-    <Card />
-    <Footer />
+    <App />
   </React.StrictMode>,
 )
