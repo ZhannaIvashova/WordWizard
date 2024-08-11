@@ -6,7 +6,7 @@ export const StyledMain = styled.main`
 export const StyledList = styled.div`
   max-width: 1060px;
   margin: 0 auto;
+  padding-top: 30px;
   display: grid;
   grid-template-columns: 0.3fr repeat(5, 1fr);
-  border: 1px solid red;
 `

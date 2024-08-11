@@ -1,9 +1,21 @@
-import { StyledHeader } from './styleheader';
+import { 
+  StyledHeader, StyledHeaderWrap, StyledLogo, 
+  StyledRegistrationWrap, StyledRegistrationBase
+} from './styleheader';
+import { SyledWrapperBase} from '../styleGeneral';
 
-const Header = () => {
+export const Header = () => {
   return(
-    <StyledHeader>Content</StyledHeader>
+    <StyledHeader>
+      <SyledWrapperBase>
+        <StyledHeaderWrap>
+          <StyledLogo>WordWizard</StyledLogo>
+          <StyledRegistrationWrap>
+            <StyledRegistrationBase href='#'>Log In</StyledRegistrationBase>
+            <StyledRegistrationBase href='#'>Sign Up</StyledRegistrationBase>
+          </StyledRegistrationWrap>
+        </StyledHeaderWrap>
+      </SyledWrapperBase>
+    </StyledHeader>
   )
 }
-
-export default Header

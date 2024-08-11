@@ -1,33 +1,28 @@
 import { styled } from 'styled-components';
 
-const StyledHeaderTable = styled.div`
-  text-align: center;
-  border: 1px solid red;
+export const SyledWrapperBase = styled.div`
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 30px;
 `
-const SyledContainerButton = styled.div`
+export const SyledContainerButtonBase = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `
-const ButtonBase = styled.button`
+export const SyledButtonBase = styled.button`
   &:hover {
     cursor: pointer;
   }
 `
-const LocationBase = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  border: 1px solid black;
-`
+/*export const StyledBorderBase = styled.div`
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  ${props => props.isLast && 'border-right: 1px solid black'}
+`*/
 
-export {
-  StyledHeaderTable,
-  SyledContainerButton,
-  ButtonBase,
-  LocationBase
-};
-
-
+export const StyledBorderBase = (props) => `
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  ${props.isLast ? 'border-right: 1px solid black;' : ''}
+`;

@@ -27,3 +27,10 @@ npm install
 npm run dev
 
 ```
+
+- Обновить деплой на gh-pages
+
+```
+npm run deploy
+
+```

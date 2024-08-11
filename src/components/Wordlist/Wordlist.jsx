@@ -3,7 +3,7 @@ import { StyledMain, StyledList } from './styleWordlist';
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 
-const Wordlist = () => {
+export const Wordlist = () => {
 
   return(
     <StyledMain>
@@ -14,5 +14,3 @@ const Wordlist = () => {
     </StyledMain>
   )
 }
-
-export default Wordlist

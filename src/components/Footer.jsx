@@ -1,13 +1,11 @@
 import '../index.css'
 
-function Footer() {
+export const Footer = () => {
   return (
     <>
-      <footer className='location'>
+      <footer>
         Тут будет блок footer
       </footer>
     </>
   )
 }
-
-export default Footer

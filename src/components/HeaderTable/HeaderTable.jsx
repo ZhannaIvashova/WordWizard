@@ -8,7 +8,7 @@ export const HeaderTable = () => {
       <StyledHeaderTable>Транскрипция</StyledHeaderTable>
       <StyledHeaderTable>Перевод</StyledHeaderTable>
       <StyledHeaderTable>Тема</StyledHeaderTable>
-      <StyledHeaderTable></StyledHeaderTable>
+      <StyledHeaderTable isLast></StyledHeaderTable>
     </>
   )
 }

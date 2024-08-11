@@ -1,9 +1,8 @@
-import { StyledSaveButton } from './styleSaveButton';
-import { SyledContainerButton } from '../styleGeneral';
+import { SyledContainerButton, StyledSaveButton } from './styleSaveButton';
 
 export const SaveButton = () => {
   return(
-    <SyledContainerButton>
+    <SyledContainerButton isLast>
       <StyledSaveButton>Save</StyledSaveButton>
     </SyledContainerButton>
   )
