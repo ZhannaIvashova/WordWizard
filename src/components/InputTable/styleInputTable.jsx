@@ -1,12 +1,6 @@
 import { styled } from 'styled-components';
 import { StyledBorderBase } from '../styleGeneral';
 
-export const StyledNumber = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  ${StyledBorderBase}
-`
 /*export const StyledLabel = styled(StyledBorderBase).attrs({as: 'label'})`
   padding: 3px;
 `

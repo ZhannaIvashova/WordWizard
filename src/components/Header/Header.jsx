@@ -2,12 +2,12 @@ import {
   StyledHeader, StyledHeaderWrap, StyledLogo, 
   StyledRegistrationWrap, StyledRegistrationBase
 } from './styleheader';
-import { SyledWrapperBase} from '../styleGeneral';
+import { StyledWrapperBase} from '../styleGeneral';
 
 export const Header = () => {
   return(
     <StyledHeader>
-      <SyledWrapperBase>
+      <StyledWrapperBase>
         <StyledHeaderWrap>
           <StyledLogo>WordWizard</StyledLogo>
           <StyledRegistrationWrap>
@@ -15,7 +15,7 @@ export const Header = () => {
             <StyledRegistrationBase href='#'>Sign Up</StyledRegistrationBase>
           </StyledRegistrationWrap>
         </StyledHeaderWrap>
-      </SyledWrapperBase>
+      </StyledWrapperBase>
     </StyledHeader>
   )
 }

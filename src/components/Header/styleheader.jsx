@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { SyledWrapperBase } from '../styleGeneral';
 
 export const StyledHeader = styled.header`
   background-color: black;

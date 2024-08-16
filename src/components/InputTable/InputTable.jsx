@@ -1,10 +1,11 @@
-import { StyledNumber, StyledLabel, StyledInput } from './styleInputTable';
-import { SaveButton } from '../SaveButton/SaveButton';
+import { ContainerButton } from '../ContainerButton/ContainerButton';
+import { StyledLabel, StyledInput } from './styleInputTable';
+import { StyledItemCell } from '../styleGeneral';
 
 export const InputTable = () => {
   return(
     <>
-      <StyledNumber>1</StyledNumber>
+      <StyledItemCell></StyledItemCell>
       <StyledLabel htmlFor='meaning'>
         <StyledInput 
           type='meaning' id='meaning' name='meaning' placeholder='meaning'>
@@ -25,7 +26,7 @@ export const InputTable = () => {
           type='theme' id='theme' name='theme' placeholder='theme'>
         </StyledInput>
       </StyledLabel>
-      <SaveButton></SaveButton>
+      <ContainerButton isSave></ContainerButton>
     </>
   )
 }

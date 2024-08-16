@@ -2,13 +2,7 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/*.location {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  border: 1px solid black;
-}*/
-
-
+* {
+  margin: 0;
+  padding: 0;
+}
