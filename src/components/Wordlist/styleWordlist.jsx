@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const StyledMain = styled.main`
-  background-color: rgb(204, 156, 227);
+  background-color: rgb(245, 242, 247);
 `
 export const StyledListContainer = styled.div`
   max-width: 1060px;
@@ -20,11 +20,19 @@ export const StyledListContainerHeader = styled.div`
   align-items: center;
   padding: 10px;
 `
-export const StyledStartTraining = styled.a`
-  color: black;
-  text-decoration: none;
+export const StyledStartTraining = styled.button`
+  border: none;
+  background: none;
+  font-size: 16px;
 
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
+`
+export const StyledCard = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 `

@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
-import { StyledMain, StyledListContainer, StyledList, StyledListContainerHeader, StyledStartTraining } from './styleWordlist';
+import { Card } from '../Card/Card';
+import { 
+  StyledMain, StyledListContainer, StyledList, 
+  StyledListContainerHeader, StyledStartTraining, StyledCard 
+} from './styleWordlist';
 
 export const Wordlist = () => {
 
@@ -13,8 +17,8 @@ export const Wordlist = () => {
     <StyledMain>
       <StyledListContainer>
         <StyledListContainerHeader>
-          <h2>Список слов</h2>
-          <StyledStartTraining href="#" onClick={handleStartTraining}>Тренироваться</StyledStartTraining>
+          {isVisible ? <h2>Список слов</h2> : <h2>Режим тренировки</h2>}
+          <StyledStartTraining onClick={handleStartTraining}>Тренироваться</StyledStartTraining>
         </StyledListContainerHeader>
         {isVisible ?
           <StyledList>
@@ -22,7 +26,7 @@ export const Wordlist = () => {
             <InputTable />
             <AddingWords />
           </StyledList>
-          : 'тут будут карточки'
+          : <StyledCard><Card /></StyledCard>
         }
       </StyledListContainer>
     </StyledMain>
