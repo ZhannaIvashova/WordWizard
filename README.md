@@ -1,5 +1,15 @@
 # WordWizard - сервис по изучению английских слов
 
+## Основные технологии
+
+- JS
+- Node.js
+- React
+- Vite
+- Styled-components
+- React gh-pages
+  (npm install --save-dev gh-pages)
+
 ## Проект доступен на gh-pages по ссылке
 
 https://zhannaivashova.github.io/WordWizard/
