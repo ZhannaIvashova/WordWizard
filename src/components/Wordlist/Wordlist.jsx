@@ -12,13 +12,27 @@ export const Wordlist = () => {
 
   const [isVisible, setIsVisible] = useState(true);
   const handleStartTraining = () => setIsVisible(false);
+  const handleStopTraining = () => setIsVisible(true);
 
   return(
     <StyledMain>
       <StyledListContainer>
         <StyledListContainerHeader>
-          {isVisible ? <h2>Список слов</h2> : <h2>Режим тренировки</h2>}
-          <StyledStartTraining onClick={handleStartTraining}>Тренироваться</StyledStartTraining>
+          {isVisible ? (
+            <>
+              <h2>Список слов</h2>
+              <StyledStartTraining onClick={handleStartTraining}>
+                Тренироваться
+              </StyledStartTraining>
+            </>
+          )  : (
+            <>
+              <h2>Режим тренировки</h2>
+              <StyledStartTraining onClick={handleStopTraining}>
+                Закончить тренировку
+              </StyledStartTraining>
+            </>  
+          )}       
         </StyledListContainerHeader>
         {isVisible ?
           <StyledList>

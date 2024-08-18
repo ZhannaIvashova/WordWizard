@@ -9,9 +9,10 @@ export const StyledCardConteiner = styled.div`
 
 export const StyledCard = styled.div`
   width: 100px;
+  height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 80px 50px 40px;
   border: 1px solid black;
