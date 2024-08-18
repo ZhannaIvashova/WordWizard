@@ -1,11 +1,11 @@
 import { DeleteButton } from '../DeleteButton/DeleteButton';
 import { StyledSaveButton } from './styleSaveButton';
 
-export const SaveButton = () => {
+export const SaveButton = ({ onClearInputs }) => {
   return(
     <>
       <StyledSaveButton>Save</StyledSaveButton>
-      <DeleteButton></DeleteButton>
+      <DeleteButton onClearInputs={onClearInputs}></DeleteButton>
     </>
   )
 }

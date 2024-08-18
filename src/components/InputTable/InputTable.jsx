@@ -2,31 +2,55 @@ import { ContainerButton } from '../ContainerButton/ContainerButton';
 import { StyledLabel, StyledInput } from './styleInputTable';
 import { StyledItemCell } from '../styleGeneral';
 
-export const InputTable = () => {
+export const InputTable = ({ inputValues, onInputChange, onClearInputs }) => {
   return(
     <>
       <StyledItemCell></StyledItemCell>
       <StyledLabel htmlFor='meaning'>
         <StyledInput 
-          type='meaning' id='meaning' name='meaning' placeholder='meaning'>
+          type='text' 
+          id='meaning' 
+          name='meaning'
+          placeholder='meaning'
+          value={inputValues.meaning}
+          onChange={onInputChange}
+          >
         </StyledInput>
       </StyledLabel>
       <StyledLabel htmlFor='transcription'>
         <StyledInput 
-          type='transcription' id='transcription' name='transcription' placeholder='transcription'>
+          type='text' 
+          id='transcription' 
+          name='transcription' 
+          placeholder='transcription'
+          value={inputValues.transcription}
+          onChange={onInputChange}
+          >
         </StyledInput>
       </StyledLabel>
       <StyledLabel htmlFor='translation'>
         <StyledInput 
-          type='translation' id='translation' name='translation' placeholder='translation'>
+          type='text' 
+          id='translation' 
+          name='translation' 
+          placeholder='translation'
+          value={inputValues.translation}
+          onChange={onInputChange}
+          >
         </StyledInput>
       </StyledLabel>
       <StyledLabel htmlFor='theme'>
         <StyledInput 
-          type='theme' id='theme' name='theme' placeholder='theme'>
+          type='text' 
+          id='theme' 
+          name='theme' 
+          placeholder='theme'
+          value={inputValues.theme}
+          onChange={onInputChange}
+          >
         </StyledInput>
       </StyledLabel>
-      <ContainerButton isSave></ContainerButton>
+      <ContainerButton isSave onClearInputs={onClearInputs}></ContainerButton>
     </>
   )
 }

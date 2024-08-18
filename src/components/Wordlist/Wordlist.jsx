@@ -14,6 +14,30 @@ export const Wordlist = () => {
   const handleStartTraining = () => setIsVisible(false);
   const handleStopTraining = () => setIsVisible(true);
 
+  const [inputValues, setInputValues] = useState({
+    meaning: '',
+    transcription: '',
+    translation: '',
+    theme: ''
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value
+    });
+  };
+
+  const handleClearInputs = () => {
+    setInputValues({
+      meaning: '',
+      transcription: '',
+      translation: '',
+      theme: ''
+    });
+  };
+
   return(
     <StyledMain>
       <StyledListContainer>
@@ -37,7 +61,11 @@ export const Wordlist = () => {
         {isVisible ?
           <StyledList>
             <HeaderTable />
-            <InputTable />
+            <InputTable 
+              inputValues={inputValues} 
+              onInputChange={handleInputChange} 
+              onClearInputs={handleClearInputs}
+            />
             <AddingWords />
           </StyledList>
           : <StyledCard><Card /></StyledCard>

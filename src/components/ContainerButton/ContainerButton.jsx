@@ -2,11 +2,11 @@ import { SaveButton } from '../SaveButton/SaveButton';
 import { EditButton } from '../EditButton/EditButton';
 import { SyledContainerButton } from './styleContainerButton';
 
-export const ContainerButton = (props) => {
+export const ContainerButton = ({ isSave, onClearInputs }) => {
   return(
     <SyledContainerButton isLast>
-      {props.isSave
-        ? (<SaveButton>Save</SaveButton>)
+      {isSave
+        ? (<SaveButton onClearInputs={onClearInputs}>Save</SaveButton>)
         : (<EditButton></EditButton>)
       }
     </SyledContainerButton>
