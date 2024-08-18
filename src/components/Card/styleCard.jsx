@@ -8,8 +8,8 @@ export const StyledCardConteiner = styled.div`
 `
 
 export const StyledCard = styled.div`
-  width: 100px;
-  height: 180px;
+  width: 120px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
