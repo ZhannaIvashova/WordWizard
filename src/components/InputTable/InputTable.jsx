@@ -3,6 +3,7 @@ import { StyledLabel, StyledInput } from './styleInputTable';
 import { StyledItemCell } from '../styleGeneral';
 
 export const InputTable = ({ inputValues, onInputChange, onClearInputs }) => {
+
   return(
     <>
       <StyledItemCell></StyledItemCell>
@@ -12,7 +13,7 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs }) => {
           id='meaning' 
           name='meaning'
           placeholder='meaning'
-          value={inputValues.meaning}
+          value = {inputValues.meaning}
           onChange={onInputChange}
           >
         </StyledInput>

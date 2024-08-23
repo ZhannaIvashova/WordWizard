@@ -1,69 +1,92 @@
 import { useState } from 'react';
 import { WORDS } from '../../constants';
+import arrowRight from '../../../public/images/arrow-right.svg';
+import arrowLeft from '../../../public/images/arrow-left.svg';
+//import { ArrowContainer } from '../ArrowContainer/ArrowContainer';
 import { 
-  StyledCardConteiner, StyledCard, StyledCardBName,
-  StyledCardButton, StyledCardTranslate, StyledCardNextButton
+  StyledCardContainer, StyledCard, StyledCardName, 
+  StyledCardButton, StyledCardTranslate, StyledArrowContainer, 
+  StyledArrowPrevButton, StyledArrowNextButton, StyledImgArrowButton
 } from './styleCard'
 
 
 export const Card = () => {
 
-  const [isCheck, setIsCheck] = useState(null);
-  const handleCheckState = (id) => setIsCheck(id);
-
+  const [checkedWordId, setCheckedWordId] = useState(null);
+  const handleCheckState = (id) => setCheckedWordId(id);
+  
   const [indexCurrent, setIndexCurrent] = useState(0);
-  const handleCheckIndexCard = () => {
+  const handleCheckNextIndexCard = () => {
     indexCurrent + 1 <= WORDS.length - 1 
     ? setIndexCurrent(indexCurrent + 1) 
     : setIndexCurrent(0)
   }
+  const handleCheckPrevIndexCard = () => {
+    indexCurrent !== 0
+    ? setIndexCurrent(indexCurrent - 1)
+    : setIndexCurrent(WORDS.length - 1)
+  }
 
   return (
-    <StyledCardConteiner>
+    <StyledCardContainer>
       <StyledCard>
-        <StyledCardBName>
+        <StyledCardName>
           {WORDS[indexCurrent].english.charAt(0).toUpperCase() 
             + WORDS[indexCurrent].english.slice(1)}
-        </StyledCardBName>
+        </StyledCardName>
         <div>{WORDS[indexCurrent].transcription}</div>
         {
-          isCheck != WORDS[indexCurrent].id ?
-          <StyledCardButton onClick={() => handleCheckState(WORDS[indexCurrent].id)}>
-            Проверить
-          </StyledCardButton>
+          checkedWordId !== WORDS[indexCurrent].id
+          ? <StyledCardButton onClick={() => handleCheckState(WORDS[indexCurrent].id)}>
+              Проверить
+            </StyledCardButton>
           : <StyledCardTranslate>
-            {WORDS[indexCurrent].russian.charAt(0).toUpperCase() 
-            + WORDS[indexCurrent].russian.slice(1)}
+              {WORDS[indexCurrent].russian.charAt(0).toUpperCase() 
+              + WORDS[indexCurrent].russian.slice(1)}
           </StyledCardTranslate>
         }
-
       </StyledCard>
-      <StyledCardNextButton onClick={handleCheckIndexCard}>
-        Дальше
-      </StyledCardNextButton>
-    </StyledCardConteiner>
+      <StyledArrowContainer>
+        <StyledArrowPrevButton onClick={handleCheckPrevIndexCard}>
+          <StyledImgArrowButton src={arrowLeft} alt="arrowLeft" />
+        </StyledArrowPrevButton>
+        <StyledArrowNextButton onClick={handleCheckNextIndexCard}>
+          <StyledImgArrowButton src={arrowRight} alt="arrowRight" />
+        </StyledArrowNextButton>
+      </StyledArrowContainer>
+    </StyledCardContainer>
   )
+  
 
-
-  /*return WORDS.map((item, index) => (
-    <StyledCardConteiner>
-      <StyledCard>
-        <StyledCardBName>
-          {item.english.charAt(0).toUpperCase() + item.english.slice(1)}
-        </StyledCardBName>
-        <div>{item.transcription}</div>
+  /*
+  <StyledCard>
+        <StyledCardName>
+          {WORDS[indexCurrent].english.charAt(0).toUpperCase() 
+            + WORDS[indexCurrent].english.slice(1)}
+        </StyledCardName>
+        <div>{WORDS[indexCurrent].transcription}</div>
         {
-          isCheck != item.id ?
-          <StyledCardButton onClick={() => handleCheckState(item.id)}>
-            Проверить
-          </StyledCardButton>
+          checkedWordId != WORDS[indexCurrent].id 
+          ? <StyledCardButton onClick={() => handleCheckState(WORDS[indexCurrent].id)}>
+              Проверить
+            </StyledCardButton>
           : <StyledCardTranslate>
-            {item.russian.charAt(0).toUpperCase() + item.russian.slice(1)}
+              {WORDS[indexCurrent].russian.charAt(0).toUpperCase() 
+              + WORDS[indexCurrent].russian.slice(1)}
           </StyledCardTranslate>
         }
-
       </StyledCard>
-      <StyledCardNextButton>&#x2192;</StyledCardNextButton>
-    </StyledCardConteiner>
-  ))*/
+
+  */
+
+  /*
+  <StyledArrowContainer>
+        <StyledArrowPrevButton onClick={handleCheckIndexCard}>
+          <StyledImgArrowButton src={arrowLeft} alt="arrowLeft" />
+        </StyledArrowPrevButton>
+        <StyledArrowNextButton onClick={handleCheckIndexCard}>
+          <StyledImgArrowButton src={arrowRight} alt="arrowRight" />
+        </StyledArrowNextButton>
+      </StyledArrowContainer>
+  */
 }

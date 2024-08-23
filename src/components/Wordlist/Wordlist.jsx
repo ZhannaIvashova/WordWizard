@@ -22,6 +22,7 @@ export const Wordlist = () => {
   })
 
   const handleInputChange = (e) => {
+    console.log(e.target)
     const { name, value } = e.target;
     setInputValues({
       ...inputValues,

@@ -1,4 +1,4 @@
-import deleteIcon from '../../images/deleteIcon.svg';
+import deleteIcon from '/images/deleteIcon.svg';
 import { StyledDeleteButton } from './styleDeleteButton';
 import { StyledImgButton } from '../styleGeneral';
 

@@ -1,10 +1,11 @@
 import { styled } from 'styled-components';
+import { StyledArrowButton } from '../styleGeneral';
 
-export const StyledCardConteiner = styled.div`
+export const StyledCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 `
 
 export const StyledCard = styled.div`
@@ -21,7 +22,7 @@ export const StyledCard = styled.div`
   background-color: #d0f4fd;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
 `
-export const StyledCardBName = styled.h3`
+export const StyledCardName = styled.h3`
   font-size: 30px;
 `
 export const StyledCardTranslate = styled.div`
@@ -38,13 +39,17 @@ export const StyledCardButton = styled.button`
     cursor: pointer;
   }
 `
-export const StyledCardNextButton = styled.button`
-  padding: 0 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  color: #63d0eb;
-  background-color: black;
-  &:hover {
-    cursor: pointer;
-  }
+export const StyledArrowContainer = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
+export const StyledArrowNextButton = styled(StyledArrowButton)`
+`
+
+export const StyledArrowPrevButton = styled(StyledArrowButton)``
+
+export const StyledImgArrowButton = styled.img`
+  width: 20px;
+  padding: 8px 20px;
 `

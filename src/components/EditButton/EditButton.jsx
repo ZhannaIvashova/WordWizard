@@ -1,4 +1,4 @@
-import editIcon from '../../images/editIcon.svg';
+import editIcon from '/images/editIcon.svg';
 import { DeleteButton } from '../DeleteButton/DeleteButton';
 import { StyledEditButton } from './styleEditButton';
 import { StyledImgButton } from '../styleGeneral';

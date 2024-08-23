@@ -33,3 +33,16 @@ export const StyledItemCell = styled.div`
 export const StyledImgButton = styled.img`
   width: 17px;
 `
+export const StyledArrowButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-color: #63d0eb;
+  border-radius: 5px;
+  background-color: #d0f4fd;
+  &:hover {
+    cursor: pointer;
+    background-color: #aee5f3;
+  }
+`
