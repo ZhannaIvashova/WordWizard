@@ -2,7 +2,7 @@ import { ContainerButton } from '../ContainerButton/ContainerButton';
 import { StyledLabel, StyledInput } from './styleInputTable';
 import { StyledItemCell } from '../styleGeneral';
 
-export const InputTable = ({ inputValues, onInputChange, onClearInputs }) => {
+export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWord }) => {
 
   return(
     <>
@@ -51,7 +51,7 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs }) => {
           >
         </StyledInput>
       </StyledLabel>
-      <ContainerButton isSave onClearInputs={onClearInputs}></ContainerButton>
+      <ContainerButton isSave onClearInputs={onClearInputs} onSaveWord={onSaveWord}></ContainerButton>
     </>
   )
 }

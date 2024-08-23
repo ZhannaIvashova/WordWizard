@@ -1,9 +1,9 @@
-import { WORDS } from '../../constants';
+//import { WORDS } from '../../constants';
 import { ContainerButton } from '../ContainerButton/ContainerButton';
 import { StyledItemCell } from '../styleGeneral';
 
-export const AddingWords = () => {
-  return WORDS.map((item, index) => (
+export const AddingWords = ({ words }) => {
+  return words.map((item, index) => (
     <>
       <StyledItemCell>{item.id}</StyledItemCell>
       <StyledItemCell>{item.english}</StyledItemCell>

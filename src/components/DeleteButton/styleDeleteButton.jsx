@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { StyledButtonBase } from '../styleGeneral';
 
+
 export const StyledDeleteButton = styled(StyledButtonBase)`
   display: flex;
   justify-content: center;

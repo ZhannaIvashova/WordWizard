@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 
+
 export const StyledMain = styled.main`
   background-color: rgb(245, 242, 247);
 `
@@ -30,7 +31,7 @@ export const StyledStartTraining = styled.button`
     cursor: pointer;
   }
 `
-export const StyledCard = styled.div`
+export const StyledCardWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

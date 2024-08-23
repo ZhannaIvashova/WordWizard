@@ -1,12 +1,5 @@
 import { styled } from 'styled-components';
-import { StyledArrowButton } from '../styleGeneral';
 
-export const StyledCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-`
 
 export const StyledCard = styled.div`
   width: 120px;
@@ -38,18 +31,4 @@ export const StyledCardButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-`
-export const StyledArrowContainer = styled.div`
-  display: flex;
-  gap: 16px;
-`
-
-export const StyledArrowNextButton = styled(StyledArrowButton)`
-`
-
-export const StyledArrowPrevButton = styled(StyledArrowButton)``
-
-export const StyledImgArrowButton = styled.img`
-  width: 20px;
-  padding: 8px 20px;
 `

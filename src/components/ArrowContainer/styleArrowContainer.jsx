@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { StyledArrowButton } from '../styleGeneral';
 
+
 export const StyledArrowContainer = styled.div`
   display: flex;
   gap: 16px;

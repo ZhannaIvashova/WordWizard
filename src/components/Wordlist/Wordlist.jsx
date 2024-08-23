@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import { WORDS } from '../../constants';
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
-import { Card } from '../Card/Card';
+import { CardContainer } from '../CardContainer/CardContainer';
 import { 
   StyledMain, StyledListContainer, StyledList, 
-  StyledListContainerHeader, StyledStartTraining, StyledCard 
+  StyledListContainerHeader, StyledStartTraining, StyledCardWrap 
 } from './styleWordlist';
+
 
 export const Wordlist = () => {
 
   const [isVisible, setIsVisible] = useState(true);
   const handleStartTraining = () => setIsVisible(false);
   const handleStopTraining = () => setIsVisible(true);
+
+  const [words, setWords] = useState(WORDS);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
@@ -39,6 +43,21 @@ export const Wordlist = () => {
     });
   };
 
+  const handleSaveWord = () => {
+    const newWord = {
+      id: words.length + 1,
+      english: inputValues.meaning,
+      transcription: inputValues.transcription,
+      russian: inputValues.translation,
+      theme: inputValues.theme,
+    };
+
+    setWords([...words, newWord]);
+
+    handleClearInputs();
+  }
+
+
   return(
     <StyledMain>
       <StyledListContainer>
@@ -64,12 +83,15 @@ export const Wordlist = () => {
             <HeaderTable />
             <InputTable 
               inputValues={inputValues} 
-              onInputChange={handleInputChange} 
+              onInputChange={handleInputChange}
               onClearInputs={handleClearInputs}
+              onSaveWord={handleSaveWord}
             />
-            <AddingWords />
+            <AddingWords words={words} />
           </StyledList>
-          : <StyledCard><Card /></StyledCard>
+          : <StyledCardWrap>
+              <CardContainer />
+            </StyledCardWrap>
         }
       </StyledListContainer>
     </StyledMain>

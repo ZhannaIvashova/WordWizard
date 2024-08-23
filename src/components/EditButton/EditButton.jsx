@@ -3,6 +3,7 @@ import { DeleteButton } from '../DeleteButton/DeleteButton';
 import { StyledEditButton } from './styleEditButton';
 import { StyledImgButton } from '../styleGeneral';
 
+
 export const EditButton = () => {
   return(
     <>
