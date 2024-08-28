@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import { WORDS } from '../../constants';
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
@@ -6,17 +8,19 @@ import { AddingWords } from '../AddingWords/AddingWords';
 import { CardContainer } from '../CardContainer/CardContainer';
 import { 
   StyledMain, StyledListContainer, StyledList, 
-  StyledListContainerHeader, StyledStartTraining, StyledCardWrap 
+  StyledCardWrap, StyleEndTrainingLink 
 } from './styleWordlist';
 
 
 export const Wordlist = () => {
 
-  const [isVisible, setIsVisible] = useState(true);
-  const handleStartTraining = () => setIsVisible(false);
-  const handleStopTraining = () => setIsVisible(true);
+  let randomWords = WORDS.sort(() => Math.random() - 0.5)
 
-  const [words, setWords] = useState(WORDS);
+  /*const [isVisible, setIsVisible] = useState(true);
+  const handleStartTraining = () => setIsVisible(false);
+  const handleStopTraining = () => setIsVisible(true);*/
+
+  const [words, setWords] = useState(randomWords);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
@@ -61,7 +65,39 @@ export const Wordlist = () => {
   return(
     <StyledMain>
       <StyledListContainer>
-        <StyledListContainerHeader>
+        <Routes>
+          <Route path="/WordWizard" element={
+            <>
+              <h2>Список слов</h2>
+              <StyledList>
+                <HeaderTable />
+                <InputTable 
+                  inputValues={inputValues} 
+                  onInputChange={handleInputChange}
+                  onClearInputs={handleClearInputs}
+                  onSaveWord={handleSaveWord}
+                />
+                <AddingWords words={words} />
+              </StyledList>
+            </>}
+          />
+
+          <Route path="/WordWizard/game" element={
+            <>
+              <h2><StyleEndTrainingLink to="/WordWizard">Закончить тренировку</StyleEndTrainingLink></h2>
+              <StyledCardWrap>
+                <CardContainer words={words} />
+              </StyledCardWrap>
+            </>}
+          /> 
+        </Routes>
+      </StyledListContainer>
+    </StyledMain>
+  )
+}
+
+/*
+<StyledListContainerHeader>
           {isVisible ? (
             <>
               <h2>Список слов</h2>
@@ -78,7 +114,8 @@ export const Wordlist = () => {
             </>  
           )}       
         </StyledListContainerHeader>
-        {isVisible ?
+
+{isVisible ?
           <StyledList>
             <HeaderTable />
             <InputTable 
@@ -90,10 +127,7 @@ export const Wordlist = () => {
             <AddingWords words={words} />
           </StyledList>
           : <StyledCardWrap>
-              <CardContainer />
+              <CardContainer words={words} />
             </StyledCardWrap>
         }
-      </StyledListContainer>
-    </StyledMain>
-  )
-}
+*/

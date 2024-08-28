@@ -1,7 +1,5 @@
-import { 
-  StyledHeader, StyledHeaderWrap, StyledLogo, 
-  StyledRegistrationWrap, StyledRegistrationBase
-} from './styleheader';
+import { NavBar } from '../NavBar/NavBar';
+import { StyledHeader, StyledHeaderWrap, StyledLogoLink } from './styleheader';
 import { StyledWrapperBase} from '../styleGeneral';
 
 export const Header = () => {
@@ -9,13 +7,17 @@ export const Header = () => {
     <StyledHeader>
       <StyledWrapperBase>
         <StyledHeaderWrap>
-          <StyledLogo>WordWizard</StyledLogo>
-          <StyledRegistrationWrap>
-            <StyledRegistrationBase href='#'>Log In</StyledRegistrationBase>
-            <StyledRegistrationBase href='#'>Sign Up</StyledRegistrationBase>
-          </StyledRegistrationWrap>
+          <StyledLogoLink to="/WordWizard">WordWizard</StyledLogoLink>
+          <NavBar />
         </StyledHeaderWrap>
       </StyledWrapperBase>
     </StyledHeader>
   )
+
+  /*
+  <StyledRegistrationWrap>
+            <StyledRegistrationBase href='#'>Log In</StyledRegistrationBase>
+            <StyledRegistrationBase href='#'>Sign Up</StyledRegistrationBase>
+          </StyledRegistrationWrap>
+  */
 }

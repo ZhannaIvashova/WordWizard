@@ -6,10 +6,12 @@ import {
 
 export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
 
+  const capitalizedWord = (word) => word.charAt(0).toUpperCase() + word.slice(1)
+
   return (
     <StyledCard>
       <StyledCardName>
-        {word.english.charAt(0).toUpperCase() + word.english.slice(1)}
+        { capitalizedWord(word.english) }
       </StyledCardName>
       <div>{word.transcription}</div>
       {
@@ -18,7 +20,7 @@ export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
             Проверить
           </StyledCardButton>
         : <StyledCardTranslate>
-            {word.russian.charAt(0).toUpperCase() + word.russian.slice(1)}
+            { capitalizedWord(word.russian) }
         </StyledCardTranslate>
       }
     </StyledCard>
