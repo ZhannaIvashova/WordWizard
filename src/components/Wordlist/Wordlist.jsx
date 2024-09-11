@@ -6,6 +6,7 @@ import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
 import { CardContainer } from '../CardContainer/CardContainer';
+import { Missing } from '../Missing/Missing';
 import { 
   StyledMain, StyledListContainer, StyledList, 
   StyledCardWrap, StyleEndTrainingLink 
@@ -90,6 +91,8 @@ export const Wordlist = () => {
               </StyledCardWrap>
             </>}
           /> 
+
+          <Route path='*' element={<Missing />}/>
         </Routes>
       </StyledListContainer>
     </StyledMain>

@@ -2,13 +2,17 @@ import { useState } from 'react';
 //import { WORDS } from '../../constants';
 import { Card } from '../Card/Card';
 import { ArrowContainer } from '../ArrowContainer/ArrowContainer';
-import { StyledCardContainer} from './styleCardContainer'
+import { StyledCardContainer, StyledCountLearnedWords } from './styleCardContainer'
 
 
 export const CardContainer = ({ words }) => {
-
+  
+  const [countLearnedWords, setCountLearnedWords] = useState(0);
   const [checkedWordId, setCheckedWordId] = useState(null);
-  const handleCheckWordId = (id) => setCheckedWordId(id);
+  const handleCheckWordId = (id) => {
+    setCheckedWordId(id);
+    setCountLearnedWords(countLearnedWords + 1);
+  }  
 
   const [indexCurrent, setIndexCurrent] = useState(0);
   const handleCheckNextIndexCard = () => {
@@ -33,6 +37,9 @@ export const CardContainer = ({ words }) => {
         handleCheckPrevIndexCard={handleCheckPrevIndexCard} 
         handleCheckNextIndexCard={handleCheckNextIndexCard} 
       />
+      <StyledCountLearnedWords> 
+        Слов изучено: { countLearnedWords } 
+      </StyledCountLearnedWords>
     </StyledCardContainer>
   )
 }

@@ -7,3 +7,8 @@ export const StyledCardContainer = styled.div`
   align-items: center;
   gap: 30px;
 `
+
+export const StyledCountLearnedWords = styled.div`
+  color: #15424d;
+  font-size: 20px;
+`
