@@ -187,7 +187,7 @@ Error generating stack: `+o.message+`
   &:hover {
     cursor: pointer;
   }
-`,lg=({word:e,checkedWordId:t,handleCheckWordId:n})=>{const r=l=>l.charAt(0).toUpperCase()+l.slice(1);return x.jsxs(eg,{children:[x.jsx(tg,{children:r(e.english)}),x.jsx("div",{children:e.transcription}),t!==e.id?x.jsx(rg,{onClick:()=>n(e.id),children:"Проверить"}):x.jsx(ng,{children:r(e.russian)})]})},og="/WordWizard/images/arrow-right.svg",ig="/WordWizard/images/arrow-left.svg",ug=O.div`
+`,lg=({word:e,checkedWordId:t,handleCheckWordId:n})=>{const r=o=>o.charAt(0).toUpperCase()+o.slice(1),l=P.useRef();return P.useEffect(()=>{l.current&&t!==e.id&&l.current.focus()},[e]),x.jsxs(eg,{children:[x.jsx(tg,{children:r(e.english)}),x.jsx("div",{children:e.transcription}),t!==e.id?x.jsx(rg,{ref:l,onClick:()=>n(e.id),children:"Проверить"}):x.jsx(ng,{children:r(e.russian)})]})},og="/WordWizard/images/arrow-right.svg",ig="/WordWizard/images/arrow-left.svg",ug=O.div`
   display: flex;
   gap: 16px;
 `,sg=O(qd)``,ag=O(qd)``,tc=O.img`
