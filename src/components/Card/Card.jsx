@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+
 import { 
   StyledCard, StyledCardName, 
   StyledCardTranslate, StyledCardButton
@@ -5,8 +7,17 @@ import {
 
 
 export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
+  
+  const capitalizedWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
-  const capitalizedWord = (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  //создаю реф для кнопки
+  const buttonRef = useRef();
+
+  useEffect(() => {
+    if (buttonRef.current && checkedWordId !== word.id) {
+      buttonRef.current.focus();
+    }
+  }, [word]);
 
   return (
     <StyledCard>
@@ -16,7 +27,9 @@ export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
       <div>{word.transcription}</div>
       {
         checkedWordId !== word.id
-        ? <StyledCardButton onClick={() => handleCheckWordId(word.id)}>
+        ? <StyledCardButton 
+          ref={buttonRef}
+          onClick={() => handleCheckWordId(word.id)}>
             Проверить
           </StyledCardButton>
         : <StyledCardTranslate>
