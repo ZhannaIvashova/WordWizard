@@ -220,7 +220,7 @@ Error generating stack: `+o.message+`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding-top: 10px;
 `,kg=$(ws)`
   color: #15424d;
   text-decoration: none;
