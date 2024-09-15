@@ -38,7 +38,7 @@ export const StyledCardWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding-top: 10px;
 `
 
 export const StyleEndTrainingLink = styled(Link)`
