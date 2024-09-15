@@ -15,13 +15,14 @@ import {
 
 export const Wordlist = () => {
 
-  let randomWords = WORDS.sort(() => Math.random() - 0.5)
+  /*let randomWords = WORDS.sort(() => Math.random() - 0.5)*/
 
   /*const [isVisible, setIsVisible] = useState(true);
   const handleStartTraining = () => setIsVisible(false);
   const handleStopTraining = () => setIsVisible(true);*/
 
-  const [words, setWords] = useState(randomWords);
+  /*const [words, setWords] = useState(randomWords);*/
+  const [words, setWords] = useState(WORDS);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
@@ -51,13 +52,16 @@ export const Wordlist = () => {
   const handleSaveWord = () => {
     const newWord = {
       id: words.length + 1,
-      english: inputValues.meaning,
-      transcription: inputValues.transcription,
-      russian: inputValues.translation,
-      theme: inputValues.theme,
+      english: inputValues.meaning.trim(),
+      transcription: inputValues.transcription.trim(),
+      russian: inputValues.translation.trim(),
+      theme: inputValues.theme.trim(),
     };
-
-    setWords([...words, newWord]);
+    
+    //проверяю что введено слово с переводом и делаю рендер
+    if (newWord.english !== '' && newWord.russian !== '') {
+      setWords([...words, newWord]);
+    }
 
     handleClearInputs();
   }
@@ -73,7 +77,7 @@ export const Wordlist = () => {
               <StyledList>
                 <HeaderTable />
                 <InputTable 
-                  inputValues={inputValues} 
+                  inputValues={inputValues}
                   onInputChange={handleInputChange}
                   onClearInputs={handleClearInputs}
                   onSaveWord={handleSaveWord}

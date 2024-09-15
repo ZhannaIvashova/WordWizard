@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 export const StyledWrapperBase = styled.div`
   max-width: 1240px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 12px;
 `
 export const StyledContainerButtonBase = styled.div`
   display: flex;

@@ -11,7 +11,7 @@ export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
   const capitalizedWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
   //создаю реф для кнопки
-  const buttonRef = useRef();
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     if (buttonRef.current && checkedWordId !== word.id) {

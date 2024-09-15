@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 export const StyledMain = styled.main`
+  flex: 1;
   background-color: rgb(245, 242, 247);
 `
 export const StyledListContainer = styled.div`
