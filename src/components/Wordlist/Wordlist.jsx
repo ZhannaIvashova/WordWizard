@@ -12,16 +12,10 @@ import {
   StyledCardWrap, StyleEndTrainingLink 
 } from './styleWordlist';
 
+/*let randomWords = WORDS.sort(() => Math.random() - 0.5)*/
 
 export const Wordlist = () => {
 
-  /*let randomWords = WORDS.sort(() => Math.random() - 0.5)*/
-
-  /*const [isVisible, setIsVisible] = useState(true);
-  const handleStartTraining = () => setIsVisible(false);
-  const handleStopTraining = () => setIsVisible(true);*/
-
-  /*const [words, setWords] = useState(randomWords);*/
   const [words, setWords] = useState(WORDS);
 
   const [inputValues, setInputValues] = useState({
