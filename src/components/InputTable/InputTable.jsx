@@ -2,8 +2,11 @@ import { ContainerButton } from '../ContainerButton/ContainerButton';
 import { StyledLabel, StyledInput } from './styleInputTable';
 import { StyledItemCell } from '../styleGeneral';
 
-export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWord }) => {
+export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWord, emptyFields }) => {
   
+  //проверяю, находится ли конкретное поле в списке emptyFields
+  const isFieldEmpty = (fieldName) => emptyFields.includes(fieldName);
+
   return(
     <>
       <StyledItemCell></StyledItemCell>
@@ -13,8 +16,10 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           id='meaning' 
           name='meaning'
           placeholder='meaning'
+          required
           value = {inputValues.meaning}
           onChange={onInputChange}
+          isError={isFieldEmpty('english')}
           >
         </StyledInput>
       </StyledLabel>
@@ -26,6 +31,7 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           placeholder='transcription'
           value={inputValues.transcription}
           onChange={onInputChange}
+          isError={isFieldEmpty('transcription')}
           >
         </StyledInput>
       </StyledLabel>
@@ -37,6 +43,7 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           placeholder='translation'
           value={inputValues.translation}
           onChange={onInputChange}
+          isError={isFieldEmpty('russian')}
           >
         </StyledInput>
       </StyledLabel>
@@ -48,6 +55,7 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           placeholder='theme'
           value={inputValues.theme}
           onChange={onInputChange}
+          isError={isFieldEmpty('theme')}
           >
         </StyledInput>
       </StyledLabel>

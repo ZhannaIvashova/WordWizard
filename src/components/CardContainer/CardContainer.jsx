@@ -30,7 +30,7 @@ export const CardContainer = ({ words }) => {
   const handleCheckNextIndexCard = () => {
     indexCurrent + 1 <= words.length - 1 
     ? setIndexCurrent(indexCurrent + 1) 
-    : setIndexCurrent(0);
+    : setIndexCurrent(0);  //сделать предупреждение что карты кончились!!!!
   }
   const handleCheckPrevIndexCard = () => {
     indexCurrent !== 0

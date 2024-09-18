@@ -16,4 +16,6 @@ export const StyledLabel = styled.label`
 export const StyledInput = styled.input`
   padding: 5px;
   ${StyledBorderBase}
+
+  border: ${(props) => props.isError ? '2px solid red;' : ''}
 `

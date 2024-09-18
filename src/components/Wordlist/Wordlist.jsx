@@ -17,6 +17,7 @@ import {
 export const Wordlist = () => {
 
   const [words, setWords] = useState(WORDS);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
@@ -26,7 +27,6 @@ export const Wordlist = () => {
   })
 
   const handleInputChange = (e) => {
-    console.log(e.target)
     const { name, value } = e.target;
     setInputValues({
       ...inputValues,
@@ -41,7 +41,24 @@ export const Wordlist = () => {
       translation: '',
       theme: ''
     });
+    setEmptyFields([]);
   };
+
+  const checkEmptyFields = (newWord) => {
+    const emptyFieldsNewWords = [];
+
+    for(let key in newWord) {
+      if (newWord[key] === '') {
+        emptyFieldsNewWords.push(key)
+      }
+    }
+    if (emptyFieldsNewWords.length >= 1) {
+      setEmptyFields(emptyFieldsNewWords)
+    } else {
+      setWords([...words, newWord]);
+      handleClearInputs();
+    }
+  }
 
   const handleSaveWord = () => {
     const newWord = {
@@ -51,13 +68,14 @@ export const Wordlist = () => {
       russian: inputValues.translation.trim(),
       theme: inputValues.theme.trim(),
     };
-    
-    //проверяю что введено слово с переводом и делаю рендер
-    if (newWord.english !== '' && newWord.russian !== '') {
-      setWords([...words, newWord]);
-    }
+    checkEmptyFields(newWord)
+  }
 
-    handleClearInputs();
+  const handleDeleteWord = (wordName) => {
+    console.log(wordName)
+    const updatedList = words.filter(word => word.id !== wordName)
+    console.log(updatedList)
+    setWords(updatedList)
   }
 
 
@@ -75,8 +93,12 @@ export const Wordlist = () => {
                   onInputChange={handleInputChange}
                   onClearInputs={handleClearInputs}
                   onSaveWord={handleSaveWord}
+                  emptyFields={emptyFields}
                 />
-                <AddingWords words={words} />
+                <AddingWords
+                  words={words}
+                  deleteWord={handleDeleteWord}
+                />
               </StyledList>
             </>}
           />

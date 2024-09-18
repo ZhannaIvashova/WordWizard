@@ -3,10 +3,23 @@ import { StyledDeleteButton } from './styleDeleteButton';
 import { StyledImgButton } from '../styleGeneral';
 
 
-export const DeleteButton = ({ onClearInputs }) => {
+export const DeleteButton = ({ onClearInputs, isDeleteAddedWord, deleteWord }) => {
   return(
-    <StyledDeleteButton onClick={onClearInputs}>
-      <StyledImgButton src={deleteIcon} alt="delete icon" />
-    </StyledDeleteButton>
+    <>
+    {isDeleteAddedWord
+      ? (<StyledDeleteButton onClick={deleteWord}>
+        <StyledImgButton src={deleteIcon} alt="delete icon" />
+      </StyledDeleteButton>)
+      : (<StyledDeleteButton onClick={onClearInputs}>
+        <StyledImgButton src={deleteIcon} alt="delete icon" />
+      </StyledDeleteButton>)
+    }
+    </>
   )
 }
+
+/*
+<StyledDeleteButton onClick={onClearInputs}>
+      <StyledImgButton src={deleteIcon} alt="delete icon" />
+    </StyledDeleteButton>
+*/

@@ -4,13 +4,16 @@ import { StyledEditButton } from './styleEditButton';
 import { StyledImgButton } from '../styleGeneral';
 
 
-export const EditButton = () => {
+export const EditButton = ({ isDeleteAddedWord, deleteWord}) => {
   return(
     <>
       <StyledEditButton>
         <StyledImgButton src={editIcon} alt="edit icon" />
       </StyledEditButton>
-      <DeleteButton></DeleteButton>
+      <DeleteButton
+        isDeleteAddedWord={isDeleteAddedWord}
+        deleteWord={deleteWord}>
+      </DeleteButton>
     </>
   )
 }

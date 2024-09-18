@@ -2,15 +2,15 @@
 import { ContainerButton } from '../ContainerButton/ContainerButton';
 import { StyledItemCell } from '../styleGeneral';
 
-export const AddingWords = ({ words }) => {
+export const AddingWords = ({ words, deleteWord }) => {
   return words.map((item, index) => (
     <>
-      <StyledItemCell>{item.id}</StyledItemCell>
+      <StyledItemCell>{index + 1}</StyledItemCell>
       <StyledItemCell>{item.english}</StyledItemCell>
       <StyledItemCell>{item.transcription}</StyledItemCell>
       <StyledItemCell>{item.russian}</StyledItemCell>
       <StyledItemCell>{item.theme}</StyledItemCell>
-      <ContainerButton></ContainerButton>
+      <ContainerButton isDeleteAddedWord deleteWord={() => deleteWord(item.id)}></ContainerButton>
     </>
   ))
 }
