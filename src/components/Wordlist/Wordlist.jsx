@@ -13,14 +13,12 @@ import {
   StyledCardWrap, StyleEndTrainingLink 
 } from './styleWordlist';
 
-/*let randomWords = WORDS.sort(() => Math.random() - 0.5)*/
 
 export const Wordlist = () => {
 
-  const [words, addWord, deleteWord] = useFetchWords();
-
-  //const [words, setWords] = useState(WORDS);
+  const [words, addWord, deleteWord, editWord] = useFetchWords();
   const [emptyFields, setEmptyFields] = useState([]);
+  const [editingWordId, setEditingWordId] = useState(null);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
@@ -28,6 +26,18 @@ export const Wordlist = () => {
     translation: '',
     tags: ''
   })
+
+  const handleEditWord = (id) => {
+    console.log(id)
+    setEditingWordId(id)
+    const wordToEdit = words.find(word => word.id === id)
+    setInputValues({
+      meaning: wordToEdit.english,
+      transcription: wordToEdit.transcription,
+      translation: wordToEdit.russian,
+      tags: wordToEdit.tags
+    });
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,31 +68,49 @@ export const Wordlist = () => {
     if (emptyFieldsNewWords.length >= 1) {
       setEmptyFields(emptyFieldsNewWords)
     } else {
-      //setWords([...words, newWord]);
-      addWord(newWord);
-      handleClearInputs();
+      handleClearInputs()
+      return newWord;
     }
   }
 
   const handleSaveWord = () => {
     const newWord = {
-      /*id: words.length + 1,*/
       english: inputValues.meaning.trim(),
       transcription: inputValues.transcription.trim(),
       russian: inputValues.translation.trim(),
       tags: inputValues.tags.trim(),
     };
-    checkEmptyFields(newWord)
+    const newWordValid = checkEmptyFields(newWord);
+    addWord(newWordValid)
+  }
+  
+  //ПРИ НАЖАТИИ НА SAVE A ПОТОМ НА EDIT  убрать красные рамочки!!!!!!!!!
+  //запрос на сохранение редактированного слова
+  const handleSaveEditedWord = () => {
+    const newEditedWord = {
+      english: inputValues.meaning.trim(),
+      transcription: inputValues.transcription.trim(),
+      russian: inputValues.translation.trim(),
+      tags: inputValues.tags.trim(),
+    };
+    //console.log('newEditedWord ', newEditedWord)
+    const newEditedWordValid = checkEmptyFields(newEditedWord);
+    editWord(newEditedWordValid, editingWordId)
+    /*words.forEach((word) => {
+      if (word.id === editingWordId) {
+        word.english = newEditedWordValid.english;
+        word.transcription = newEditedWordValid.transcription;
+        word.russian = newEditedWordValid.russian;
+        word.tags = newEditedWordValid.tags;
+      }
+    })*/
+    setEditingWordId(null);
   }
 
   const handleDeleteWord = (id) => {
     console.log(id)
     deleteWord(id)
-    /*const updatedList = words.filter(word => word.id !== id)
-    console.log(updatedList)*/
-    //setWords(updatedList)
   }
-
 
   return(
     <StyledMain>
@@ -99,10 +127,13 @@ export const Wordlist = () => {
                   onClearInputs={handleClearInputs}
                   onSaveWord={handleSaveWord}
                   emptyFields={emptyFields}
+                  editingWordId={editingWordId}
+                  onSaveEditedWord={handleSaveEditedWord}
                 />
                 <AddingWords
                   words={words}
                   deleteWord={handleDeleteWord}
+                  editWord={handleEditWord}
                 />
               </StyledList>
             </>}

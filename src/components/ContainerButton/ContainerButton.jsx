@@ -3,12 +3,38 @@ import { EditButton } from '../EditButton/EditButton';
 import { SyledContainerButton } from './styleContainerButton';
 
 
-export const ContainerButton = ({ isSave, onClearInputs, 
-    onSaveWord, isDeleteAddedWord, deleteWord 
+export const ContainerButton = ({ 
+    isSave, onClearInputs, onSaveWord, isDeleteAddedWord, 
+    deleteWord, editWord, isEditableWord, onSaveEditedWord
   }) => {
   return(
     <SyledContainerButton isLast>
-      {isSave
+      {isSave ? (
+        isEditableWord
+        ? <SaveButton 
+            onClearInputs={onClearInputs} 
+            onSaveEditedWord={onSaveEditedWord}
+            isEditableWord>
+          Save
+          </SaveButton>
+        : <SaveButton 
+            onClearInputs={onClearInputs} 
+            onSaveWord={onSaveWord}>
+          Save
+          </SaveButton>
+        )
+        : <EditButton 
+            isDeleteAddedWord={isDeleteAddedWord}
+            deleteWord={deleteWord}
+            editWord={editWord}>
+          </EditButton>
+      }
+    </SyledContainerButton>
+  )
+}
+
+/*
+{isSave
         ? (<SaveButton 
             onClearInputs={onClearInputs} 
             onSaveWord={onSaveWord}>
@@ -16,9 +42,8 @@ export const ContainerButton = ({ isSave, onClearInputs,
           </SaveButton>)
         : (<EditButton 
             isDeleteAddedWord={isDeleteAddedWord}
-            deleteWord={deleteWord}>
+            deleteWord={deleteWord}
+            editWord={editWord}>
           </EditButton>)
       }
-    </SyledContainerButton>
-  )
-}
+*/

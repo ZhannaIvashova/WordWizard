@@ -4,6 +4,7 @@ export default function useFetchWords() {
   
   const [value, setValue] = useState([]);
 
+  //get-запрос на получение данных при загрузке страницы
   useEffect(() => {
     fetch('/api/words')
     //при get-запросе сервер обработывает ошибки
@@ -19,7 +20,9 @@ export default function useFetchWords() {
       })
       .catch((error) => console.log('Error: ',error))
   }, [])
-
+  
+  //post-запрос на добавление нового слова
+  //СДЕЛАТЬ ВАЛИДАЦИЮ НА СУЩЕСТВУЮЩЕЕ СЛОВО!!!!!!!!!!!!!!!
   const addWord = (newWord) => {
     console.log('addWord', newWord);
     console.log('JSON.stringify', JSON.stringify(newWord));
@@ -50,7 +53,8 @@ export default function useFetchWords() {
       })
       .catch((error) => console.log('Error: ',error))
   }
-
+  
+  //post-запрос на удаление существующего слова
   const deleteWord = (id) => {
     fetch(`/api/words/${id}/delete`, {
       method: "POST",
@@ -66,7 +70,42 @@ export default function useFetchWords() {
       })
       .catch((error) => console.log('Error: ',error))
   }
+  
+  //post-запрос на редактирование существующего слова
+  const editWord = (newEditedWord, id) => {
+    fetch(`/api/words/${id}/update`, {
+      method: "POST",
+      body: JSON.stringify(newEditedWord),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('data ', data)
+      if (data === true) {
+        setValue((currentWords) => {
+          
+          const updatedWords = currentWords.map((word) => {
+            if (word.id === id) {
+              return {
+                ...word,
+                english: data.english,
+                transcription: data.transcription,
+                russian: data.russian,
+                tags: data.tags
+              };
+            }
+            return word;
+          })
+          console.log('updatedWords ', updatedWords)
+          return updatedWords
+        })
+      }
+    })
+    .catch((error) => console.log('Error: ',error))
+  }
 
-  return [value, addWord, deleteWord]
+  return [value, addWord, deleteWord, editWord]
 }
 

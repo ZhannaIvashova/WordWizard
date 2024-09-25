@@ -1,8 +1,7 @@
-//import { WORDS } from '../../constants';
 import { ContainerButton } from '../ContainerButton/ContainerButton';
-import { StyledItemCell } from '../styleGeneral';
+import { StyledItemCell, StyledLabel } from '../styleGeneral';
 
-export const AddingWords = ({ words, deleteWord }) => {
+export const AddingWords = ({ words, deleteWord, editWord }) => {
   return words.map((item, index) => (
     <>
       <StyledItemCell>{index + 1}</StyledItemCell>
@@ -10,7 +9,7 @@ export const AddingWords = ({ words, deleteWord }) => {
       <StyledItemCell>{item.transcription}</StyledItemCell>
       <StyledItemCell>{item.russian}</StyledItemCell>
       <StyledItemCell>{item.tags}</StyledItemCell>
-      <ContainerButton isDeleteAddedWord deleteWord={() => deleteWord(item.id)}></ContainerButton>
+      <ContainerButton isDeleteAddedWord deleteWord={() => deleteWord(item.id)} editWord={() => editWord(item.id)}></ContainerButton>
     </>
   ))
 }

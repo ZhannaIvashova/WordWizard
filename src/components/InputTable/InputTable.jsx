@@ -1,8 +1,8 @@
 import { ContainerButton } from '../ContainerButton/ContainerButton';
-import { StyledLabel, StyledInput } from './styleInputTable';
-import { StyledItemCell } from '../styleGeneral';
+import { StyledInput } from './styleInputTable';
+import { StyledItemCell, StyledLabel } from '../styleGeneral';
 
-export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWord, emptyFields }) => {
+export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWord, emptyFields, editingWordId, onSaveEditedWord }) => {
   
   //проверяю, находится ли конкретное поле в списке emptyFields
   const isFieldEmpty = (fieldName) => emptyFields.includes(fieldName);
@@ -16,7 +16,6 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           id='meaning' 
           name='meaning'
           placeholder='meaning'
-          required
           value = {inputValues.meaning}
           onChange={onInputChange}
           isError={isFieldEmpty('english')}
@@ -59,7 +58,20 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           >
         </StyledInput>
       </StyledLabel>
-      <ContainerButton isSave onClearInputs={onClearInputs} onSaveWord={onSaveWord}></ContainerButton>
+      {
+        editingWordId === null
+        ? <ContainerButton 
+            isSave 
+            onClearInputs={onClearInputs} 
+            onSaveWord={onSaveWord}>
+          </ContainerButton>
+        :  <ContainerButton 
+            isSave 
+            onClearInputs={onClearInputs} 
+            onSaveEditedWord={onSaveEditedWord}
+            isEditableWord>
+          </ContainerButton>
+      }
     </>
   )
 }
