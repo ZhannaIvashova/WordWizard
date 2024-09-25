@@ -50,12 +50,12 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
       <StyledLabel htmlFor='theme'>
         <StyledInput 
           type='text' 
-          id='theme' 
-          name='theme' 
-          placeholder='theme'
-          value={inputValues.theme}
+          id='tags' 
+          name='tags' 
+          placeholder='tags'
+          value={inputValues.tags}
           onChange={onInputChange}
-          isError={isFieldEmpty('theme')}
+          isError={isFieldEmpty('tags')}
           >
         </StyledInput>
       </StyledLabel>

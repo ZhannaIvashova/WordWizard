@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { WORDS } from '../../constants';
+import useFetchWords from '../../hooks/useFetchWords';
+
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
@@ -16,14 +17,16 @@ import {
 
 export const Wordlist = () => {
 
-  const [words, setWords] = useState(WORDS);
+  const [words, addWord, deleteWord] = useFetchWords();
+
+  //const [words, setWords] = useState(WORDS);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const [inputValues, setInputValues] = useState({
     meaning: '',
     transcription: '',
     translation: '',
-    theme: ''
+    tags: ''
   })
 
   const handleInputChange = (e) => {
@@ -39,7 +42,7 @@ export const Wordlist = () => {
       meaning: '',
       transcription: '',
       translation: '',
-      theme: ''
+      tags: ''
     });
     setEmptyFields([]);
   };
@@ -55,27 +58,29 @@ export const Wordlist = () => {
     if (emptyFieldsNewWords.length >= 1) {
       setEmptyFields(emptyFieldsNewWords)
     } else {
-      setWords([...words, newWord]);
+      //setWords([...words, newWord]);
+      addWord(newWord);
       handleClearInputs();
     }
   }
 
   const handleSaveWord = () => {
     const newWord = {
-      id: words.length + 1,
+      /*id: words.length + 1,*/
       english: inputValues.meaning.trim(),
       transcription: inputValues.transcription.trim(),
       russian: inputValues.translation.trim(),
-      theme: inputValues.theme.trim(),
+      tags: inputValues.tags.trim(),
     };
     checkEmptyFields(newWord)
   }
 
-  const handleDeleteWord = (wordName) => {
-    console.log(wordName)
-    const updatedList = words.filter(word => word.id !== wordName)
-    console.log(updatedList)
-    setWords(updatedList)
+  const handleDeleteWord = (id) => {
+    console.log(id)
+    deleteWord(id)
+    /*const updatedList = words.filter(word => word.id !== id)
+    console.log(updatedList)*/
+    //setWords(updatedList)
   }
 
 

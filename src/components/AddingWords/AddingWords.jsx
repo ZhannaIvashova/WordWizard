@@ -9,7 +9,7 @@ export const AddingWords = ({ words, deleteWord }) => {
       <StyledItemCell>{item.english}</StyledItemCell>
       <StyledItemCell>{item.transcription}</StyledItemCell>
       <StyledItemCell>{item.russian}</StyledItemCell>
-      <StyledItemCell>{item.theme}</StyledItemCell>
+      <StyledItemCell>{item.tags}</StyledItemCell>
       <ContainerButton isDeleteAddedWord deleteWord={() => deleteWord(item.id)}></ContainerButton>
     </>
   ))
