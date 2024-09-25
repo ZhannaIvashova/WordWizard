@@ -93,18 +93,11 @@ export const Wordlist = () => {
       russian: inputValues.translation.trim(),
       tags: inputValues.tags.trim(),
     };
-    //console.log('newEditedWord ', newEditedWord)
     const newEditedWordValid = checkEmptyFields(newEditedWord);
-    editWord(newEditedWordValid, editingWordId)
-    /*words.forEach((word) => {
-      if (word.id === editingWordId) {
-        word.english = newEditedWordValid.english;
-        word.transcription = newEditedWordValid.transcription;
-        word.russian = newEditedWordValid.russian;
-        word.tags = newEditedWordValid.tags;
-      }
-    })*/
-    setEditingWordId(null);
+    if (newEditedWordValid) {
+      editWord(newEditedWordValid, editingWordId)
+      setEditingWordId(null);
+    }
   }
 
   const handleDeleteWord = (id) => {

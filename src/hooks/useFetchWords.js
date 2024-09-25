@@ -83,10 +83,10 @@ export default function useFetchWords() {
     .then(response => response.json())
     .then(data => {
       console.log('data ', data)
-      if (data === true) {
+      if (data.hasOwnProperty('id')) {
+        
         setValue((currentWords) => {
-          
-          const updatedWords = currentWords.map((word) => {
+            const updatedWords = currentWords.map((word) => {
             if (word.id === id) {
               return {
                 ...word,
