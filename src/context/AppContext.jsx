@@ -6,8 +6,12 @@ export const AppContext = createContext();
 //провайдер контекста
 export const AppProvider = ({ children }) => {
   const [words, setWords] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   
   const fetchWords = () => {
+
+      setLoading(true)
       fetch('/api/words')
         .then((response) => {
           if (!response.ok) {
@@ -18,8 +22,18 @@ export const AppProvider = ({ children }) => {
         .then((data) => {
           console.log('data', data);
           setWords(data)
+          setError(false);
         })
-        .catch((error) => console.log('Error: ',error))
+        .catch((error) => {
+          console.log('Error: ',error)
+          setError(true)
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setLoading(false)
+          }, 1500)
+          console.log('Загрузка завершена')
+        })
   }
 
   const addWord = (newWord) => {
@@ -111,7 +125,9 @@ export const AppProvider = ({ children }) => {
         words,
         addWord,
         editWord,
-        deleteWord
+        deleteWord,
+        loading,
+        error
       }}
     >
       {children}

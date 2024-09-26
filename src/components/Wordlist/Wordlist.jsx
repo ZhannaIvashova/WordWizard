@@ -10,6 +10,7 @@ import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
 import { CardContainer } from '../CardContainer/CardContainer';
 import { Missing } from '../Missing/Missing';
+import { Loading } from '../Loading/Loading.jsx';
 import { 
   StyledMain, StyledListContainer, StyledList, 
   StyledCardWrap, StyleEndTrainingLink 
@@ -17,7 +18,9 @@ import {
 
 
 export const Wordlist = () => {
-  const { words, addWord, editWord, deleteWord } = useContext(AppContext);
+  const { words, addWord, editWord, 
+          deleteWord, loading, error 
+        } = useContext(AppContext);
   //для кастомного хука:
   //const [words, addWord, deleteWord, editWord] = useFetchWords();
   const [emptyFields, setEmptyFields] = useState([]);
@@ -87,7 +90,6 @@ export const Wordlist = () => {
     addWord(newWordValid)
   }
   
-  //ПРИ НАЖАТИИ НА SAVE A ПОТОМ НА EDIT  убрать красные рамочки!!!!!!!!!
   //запрос на сохранение редактированного слова
   const handleSaveEditedWord = () => {
     const newEditedWord = {
@@ -113,25 +115,33 @@ export const Wordlist = () => {
       <StyledListContainer>
         <Routes>
           <Route path="/WordWizard" element={
-            <>
-              <h2>Список слов</h2>
-              <StyledList>
-                <HeaderTable />
-                <InputTable 
-                  inputValues={inputValues}
-                  onInputChange={handleInputChange}
-                  onClearInputs={handleClearInputs}
-                  onSaveWord={handleSaveWord}
-                  emptyFields={emptyFields}
-                  editingWordId={editingWordId}
-                  onSaveEditedWord={handleSaveEditedWord}
-                />
-                <AddingWords
-                  words={words}
-                  deleteWord={handleDeleteWord}
-                  editWord={handleEditWord}
-                />
-              </StyledList>
+            <> 
+              { error
+                ? <Missing />
+                : (loading
+                    ? <Loading/>
+                    : <>
+                      <h2>Список слов</h2>
+                      <StyledList>
+                        <HeaderTable />
+                        <InputTable 
+                          inputValues={inputValues}
+                          onInputChange={handleInputChange}
+                          onClearInputs={handleClearInputs}
+                          onSaveWord={handleSaveWord}
+                          emptyFields={emptyFields}
+                          editingWordId={editingWordId}
+                          onSaveEditedWord={handleSaveEditedWord}
+                        />
+                        <AddingWords
+                          words={words}
+                          deleteWord={handleDeleteWord}
+                          editWord={handleEditWord}
+                        />
+                      </StyledList>
+                    </>
+                  )
+              }
             </>}
           />
 

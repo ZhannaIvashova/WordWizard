@@ -1,7 +1,10 @@
 import { styled } from 'styled-components';
 
-export const StyledMissingContainer = styled.div `
-  height: 500px;
+export const StyledMissingText = styled.div `
   text-align: center;
   color: #15424d;
+`
+
+export const StyledMissingImg = styled.img`
+  width: 100%;
 `
