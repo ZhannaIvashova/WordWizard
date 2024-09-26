@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import useFetchWords from '../../hooks/useFetchWords';
+//изначально писала кастомный хук
+//import useFetchWords from '../../hooks/useFetchWords';
+import { AppContext } from '../../context/AppContext.jsx';
 
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
@@ -15,8 +17,9 @@ import {
 
 
 export const Wordlist = () => {
-
-  const [words, addWord, deleteWord, editWord] = useFetchWords();
+  const { words, addWord, editWord, deleteWord } = useContext(AppContext);
+  //для кастомного хука:
+  //const [words, addWord, deleteWord, editWord] = useFetchWords();
   const [emptyFields, setEmptyFields] = useState([]);
   const [editingWordId, setEditingWordId] = useState(null);
 
@@ -61,7 +64,7 @@ export const Wordlist = () => {
     const emptyFieldsNewWords = [];
 
     for(let key in newWord) {
-      if (newWord[key] === '') {
+      if (newWord[key] === '' && key !== 'tags') {
         emptyFieldsNewWords.push(key)
       }
     }

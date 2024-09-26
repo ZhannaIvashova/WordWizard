@@ -1,5 +1,5 @@
 import { ContainerButton } from '../ContainerButton/ContainerButton';
-import { StyledItemCell, StyledLabel } from '../styleGeneral';
+import { StyledItemCell } from '../styleGeneral';
 
 export const AddingWords = ({ words, deleteWord, editWord }) => {
   return words.map((item, index) => (

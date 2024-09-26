@@ -54,7 +54,6 @@ export const InputTable = ({ inputValues, onInputChange, onClearInputs, onSaveWo
           placeholder='tags'
           value={inputValues.tags}
           onChange={onInputChange}
-          isError={isFieldEmpty('tags')}
           >
         </StyledInput>
       </StyledLabel>
