@@ -21,7 +21,7 @@ export const AppProvider = ({ children }) => {
         })
         .then((data) => {
           console.log('data', data);
-          setWords(data)
+          setWords(data);
           setError(false);
         })
         .catch((error) => {
