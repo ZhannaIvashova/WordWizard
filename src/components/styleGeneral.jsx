@@ -31,6 +31,12 @@ export const StyledItemCell = styled.div`
   padding: 4px 0 4px 15px;
   ${StyledBorderBase}
 `
+
+export const StyledLabel = styled.label`
+  padding: 3px;
+  ${StyledBorderBase}
+`
+
 export const StyledImgButton = styled.img`
   width: 17px;
 `
