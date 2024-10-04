@@ -17,9 +17,3 @@ export const DeleteButton = ({ onClearInputs, isDeleteAddedWord, deleteWord }) =
     </>
   )
 }
-
-/*
-<StyledDeleteButton onClick={onClearInputs}>
-      <StyledImgButton src={deleteIcon} alt="delete icon" />
-    </StyledDeleteButton>
-*/

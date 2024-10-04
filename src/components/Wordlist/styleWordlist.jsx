@@ -9,7 +9,7 @@ export const StyledMain = styled.main`
 export const StyledListContainer = styled.div`
   max-width: 1060px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding: 30px 5px 0 5px;
 `
 
 export const StyledList = styled.div`

@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Card } from '../Card/Card';
 import { ArrowContainer } from '../ArrowContainer/ArrowContainer';
+import { WarningMessage } from '../WarningMessage/WarningMessage';
 import { StyledCardContainer, StyledCountLearnedWords } from './styleCardContainer'
 
 
@@ -18,7 +19,8 @@ export const CardContainer = ({ words }) => {
   }, [words]);
   console.log(randomWords)*/
 
-
+  const [isWordFinished, setIsWordFinished] = useState(false);
+  
   const [countLearnedWords, setCountLearnedWords] = useState(0);
   const [checkedWordId, setCheckedWordId] = useState(null);
   const handleCheckWordId = (id) => {
@@ -30,12 +32,20 @@ export const CardContainer = ({ words }) => {
   const handleCheckNextIndexCard = () => {
     indexCurrent + 1 <= words.length - 1 
     ? setIndexCurrent(indexCurrent + 1) 
-    : setIndexCurrent(0);  //сделать предупреждение что карты кончились!!!!
+    : setIsWordFinished(true);
   }
+
   const handleCheckPrevIndexCard = () => {
     indexCurrent !== 0
     ? setIndexCurrent(indexCurrent - 1)
-    : setIndexCurrent(words.length - 1) ;
+    : setIndexCurrent(words.length - 1);
+  }
+
+  const handleStartAgain = () => {
+    setIsWordFinished(false);
+    setIndexCurrent(0);
+    setCountLearnedWords(0);
+    setCheckedWordId(null);
   }
   
   //прерывания рендиренга, если буду рендерится через useEffect
@@ -45,18 +55,24 @@ export const CardContainer = ({ words }) => {
 
   return (
     <StyledCardContainer>
-      <Card
-        word={randomWords[indexCurrent]}
-        checkedWordId={checkedWordId}
-        handleCheckWordId={handleCheckWordId}
-      />
-      <ArrowContainer 
-        handleCheckPrevIndexCard={handleCheckPrevIndexCard} 
-        handleCheckNextIndexCard={handleCheckNextIndexCard} 
-      />
-      <StyledCountLearnedWords> 
-        Слов изучено: { countLearnedWords } 
-      </StyledCountLearnedWords>
+      { isWordFinished
+        ? <WarningMessage handleStartAgain={handleStartAgain}/>
+        : 
+        <>
+          <Card
+            word={randomWords[indexCurrent]}
+            checkedWordId={checkedWordId}
+            handleCheckWordId={handleCheckWordId}
+          />
+          <ArrowContainer 
+            handleCheckPrevIndexCard={handleCheckPrevIndexCard} 
+            handleCheckNextIndexCard={handleCheckNextIndexCard} 
+          />
+          <StyledCountLearnedWords> 
+            Слов изучено: { countLearnedWords } 
+          </StyledCountLearnedWords>
+        </>
+      }
     </StyledCardContainer>
   )
 }

@@ -7,7 +7,7 @@ import {
 
 
 export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
-  console.log(word)
+
   const capitalizedWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
   //создаю реф для кнопки
@@ -39,5 +39,3 @@ export const Card = ({ word, checkedWordId, handleCheckWordId }) => {
     </StyledCard>
   )
 }
-
-//checkedWordId !== word.id

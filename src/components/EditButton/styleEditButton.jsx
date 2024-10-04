@@ -8,4 +8,8 @@ export const StyledEditButton = styled(StyledButtonBase)`
   align-items: center;
   width: 60px;
   background-color: #e3cb2f;
+
+  @media (max-width: 874px) {
+    width: 30px;
+  }
 `
