@@ -4,7 +4,7 @@ import { StyledItemCell } from '../styleGeneral';
 export const AddingWords = ({ words, deleteWord, editWord }) => {
   return words.map((item, index) => (
     <>
-      <StyledItemCell>{index + 1}</StyledItemCell>
+      <StyledItemCell className='itemCellNumber'>{index + 1}</StyledItemCell>
       <StyledItemCell>{item.english}</StyledItemCell>
       <StyledItemCell>{item.transcription}</StyledItemCell>
       <StyledItemCell>{item.russian}</StyledItemCell>

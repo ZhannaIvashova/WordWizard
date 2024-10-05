@@ -77,7 +77,6 @@ export const Wordlist = observer(() => {
 
   const handleSaveWord = () => {
     const newWord = {
-      id: store.words.length + 1,
       english: inputValues.meaning.trim(),
       transcription: inputValues.transcription.trim(),
       russian: inputValues.translation.trim(),

@@ -12,13 +12,13 @@ export const InputTable = ({
 
   return(
     <>
-      <StyledItemCell></StyledItemCell>
-      <StyledLabel htmlFor='meaning'>
+      <StyledItemCell className='inputWords'></StyledItemCell>
+      <StyledLabel htmlFor='meaning' className='inputWords'>
         <StyledInput 
           type='text' 
           id='meaning' 
           name='meaning'
-          placeholder='meaning'
+          placeholder='english'
           required
           value = {inputValues.meaning}
           onChange={onInputChange}
@@ -26,7 +26,7 @@ export const InputTable = ({
           >
         </StyledInput>
       </StyledLabel>
-      <StyledLabel htmlFor='transcription'>
+      <StyledLabel htmlFor='transcription' className='inputWords'>
         <StyledInput 
           type='text' 
           id='transcription' 
@@ -38,19 +38,19 @@ export const InputTable = ({
           >
         </StyledInput>
       </StyledLabel>
-      <StyledLabel htmlFor='translation'>
+      <StyledLabel htmlFor='translation' className='inputWords'>
         <StyledInput 
           type='text' 
           id='translation' 
           name='translation' 
-          placeholder='translation'
+          placeholder='russian'
           value={inputValues.translation}
           onChange={onInputChange}
           isError={isFieldEmpty('russian')}
           >
         </StyledInput>
       </StyledLabel>
-      <StyledLabel htmlFor='tags'>
+      <StyledLabel htmlFor='tags' className='inputWords'>
         <StyledInput 
           type='text' 
           id='tags' 
@@ -64,12 +64,14 @@ export const InputTable = ({
       </StyledLabel>
       {
         editingWordId === null
-        ? <ContainerButton 
+        ? <ContainerButton
+            isFirst
             isSave 
             onClearInputs={onClearInputs} 
             onSaveWord={onSaveWord}>
           </ContainerButton>
-        :  <ContainerButton 
+        :  <ContainerButton
+            isFirst
             isSave 
             onClearInputs={onClearInputs} 
             onSaveEditedWord={onSaveEditedWord}

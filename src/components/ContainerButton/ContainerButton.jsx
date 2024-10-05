@@ -5,10 +5,10 @@ import { SyledContainerButton } from './styleContainerButton';
 
 export const ContainerButton = ({ 
   isSave, onClearInputs, onSaveWord, isDeleteAddedWord, 
-  deleteWord, editWord, isEditableWord, onSaveEditedWord
+  deleteWord, editWord, isEditableWord, onSaveEditedWord, isFirst
   }) => {
   return(
-    <SyledContainerButton isLast>
+    <SyledContainerButton isLast isFirst={isFirst}>
       {isSave ? (
         isEditableWord
         ? <SaveButton 

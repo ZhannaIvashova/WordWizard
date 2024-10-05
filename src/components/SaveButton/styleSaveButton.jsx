@@ -11,3 +11,9 @@ export const StyledSaveButton = styled(StyledButtonBase)`
     font-size: 12px;
   }
 `
+
+export const StyledBorder = styled.div`
+  display: flex;
+  justify-content: end;
+  width: 100%;
+`

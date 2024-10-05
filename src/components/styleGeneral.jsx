@@ -30,11 +30,20 @@ export const StyledItemCell = styled.div`
   align-items: center;
   padding: 4px 0 4px 15px;
   ${StyledBorderBase}
-`
 
-export const StyledLabel = styled.label`
-  padding: 3px;
-  ${StyledBorderBase}
+  &.itemCellNumber {
+    padding: 0;
+    justify-content: center;
+    min-width: 26px;
+  }
+
+  &.inputWords {
+    background-color: #d0f4fd;
+  }
+
+  @media (max-width: 674px) {
+    padding-left: 5px;
+  }
 `
 
 export const StyledImgButton = styled.img`

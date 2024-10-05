@@ -7,7 +7,7 @@ export const StyledEditButton = styled(StyledButtonBase)`
   justify-content: center;
   align-items: center;
   width: 60px;
-  background-color: #e3cb2f;
+  background-color: #ebda69;
 
   @media (max-width: 874px) {
     width: 30px;
