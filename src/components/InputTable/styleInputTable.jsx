@@ -11,11 +11,19 @@ export const StyledInput = styled(StyledBorderBase).attrs({as: 'input'})`
 export const StyledLabel = styled.label`
   padding: 3px;
   ${StyledBorderBase}
+
+  &.inputWords {
+    background-color: #d0f4fd;
+  }
 `
 
 export const StyledInput = styled.input`
   padding: 5px;
   ${StyledBorderBase}
 
-  border: ${(props) => props.isError ? '2px solid red;' : ''}
+  border: ${(props) => props.isError ? '2px solid red;' : ''};
+
+  @media (max-width: 836px) {
+    width: 18vw;
+  }
 `

@@ -1,30 +1,45 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { observer } from "mobx-react-lite";
 
-import { WORDS } from '../../constants';
+import { wordsStoreContext } from '../../store/wordsStore';
 import { HeaderTable } from '../HeaderTable/HeaderTable';
 import { InputTable } from '../InputTable/InputTable';
 import { AddingWords } from '../AddingWords/AddingWords';
 import { CardContainer } from '../CardContainer/CardContainer';
 import { Missing } from '../Missing/Missing';
+import { Loading } from '../Loading/Loading.jsx';
 import { 
   StyledMain, StyledListContainer, StyledList, 
   StyledCardWrap, StyleEndTrainingLink 
 } from './styleWordlist';
 
-/*let randomWords = WORDS.sort(() => Math.random() - 0.5)*/
 
-export const Wordlist = () => {
 
-  const [words, setWords] = useState(WORDS);
+export const Wordlist = observer(() => {
+  const store = useContext(wordsStoreContext);
+
   const [emptyFields, setEmptyFields] = useState([]);
-
+  const [editingWordId, setEditingWordId] = useState(null);
   const [inputValues, setInputValues] = useState({
     meaning: '',
     transcription: '',
     translation: '',
-    theme: ''
+    tags: ''
   })
+
+  const handleEditWord = (id) => {
+    console.log('id редактируемого слова', id)
+    setEditingWordId(id)
+
+    const wordToEdit = store.words.find(word => word.id === id)
+    setInputValues({
+      meaning: wordToEdit.english,
+      transcription: wordToEdit.transcription,
+      translation: wordToEdit.russian,
+      tags: wordToEdit.tags
+    });
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +54,7 @@ export const Wordlist = () => {
       meaning: '',
       transcription: '',
       translation: '',
-      theme: ''
+      tags: ''
     });
     setEmptyFields([]);
   };
@@ -55,51 +70,73 @@ export const Wordlist = () => {
     if (emptyFieldsNewWords.length >= 1) {
       setEmptyFields(emptyFieldsNewWords)
     } else {
-      setWords([...words, newWord]);
       handleClearInputs();
+      return newWord;
     }
   }
 
   const handleSaveWord = () => {
     const newWord = {
-      id: words.length + 1,
       english: inputValues.meaning.trim(),
       transcription: inputValues.transcription.trim(),
       russian: inputValues.translation.trim(),
-      theme: inputValues.theme.trim(),
+      tags: inputValues.tags.trim(),
     };
-    checkEmptyFields(newWord)
+    
+    const newWordValid = checkEmptyFields(newWord);
+    store.addWord(newWordValid)
   }
 
-  const handleDeleteWord = (wordName) => {
-    console.log(wordName)
-    const updatedList = words.filter(word => word.id !== wordName)
-    console.log(updatedList)
-    setWords(updatedList)
+  //запрос на сохранение редактированного слова
+  const handleSaveEditedWord = () => {
+    const newEditedWord = {
+      english: inputValues.meaning.trim(),
+      transcription: inputValues.transcription.trim(),
+      russian: inputValues.translation.trim(),
+      tags: inputValues.tags.trim(),
+    };
+
+    const newEditedWordValid = checkEmptyFields(newEditedWord);
+    if (newEditedWordValid) {
+      store.editWord(newEditedWordValid, editingWordId)
+      setEditingWordId(null);
+    }
   }
 
+  const handleDeleteWord = (id) => store.deleteWord(id)
 
   return(
     <StyledMain>
       <StyledListContainer>
         <Routes>
           <Route path="/WordWizard" element={
-            <>
-              <h2>Список слов</h2>
-              <StyledList>
-                <HeaderTable />
-                <InputTable 
-                  inputValues={inputValues}
-                  onInputChange={handleInputChange}
-                  onClearInputs={handleClearInputs}
-                  onSaveWord={handleSaveWord}
-                  emptyFields={emptyFields}
-                />
-                <AddingWords
-                  words={words}
-                  deleteWord={handleDeleteWord}
-                />
-              </StyledList>
+            <> 
+            { store.error
+              ? <Missing />
+              : (store.loading
+                  ? <Loading/>
+                  : <>
+                    <h2>Список слов</h2>
+                    <StyledList>
+                      <HeaderTable />
+                      <InputTable 
+                        inputValues={inputValues}
+                        onInputChange={handleInputChange}
+                        onClearInputs={handleClearInputs}
+                        onSaveWord={handleSaveWord}
+                        emptyFields={emptyFields}
+                        editingWordId={editingWordId}
+                        onSaveEditedWord={handleSaveEditedWord}
+                      />
+                      <AddingWords
+                        words={store.words}
+                        deleteWord={handleDeleteWord}
+                        editWord={handleEditWord}
+                      />
+                    </StyledList>
+                  </>
+                )
+              }
             </>}
           />
 
@@ -107,7 +144,7 @@ export const Wordlist = () => {
             <>
               <h2><StyleEndTrainingLink to="/WordWizard">Закончить тренировку</StyleEndTrainingLink></h2>
               <StyledCardWrap>
-                <CardContainer words={words} />
+                <CardContainer words={store.words} />
               </StyledCardWrap>
             </>}
           /> 
@@ -117,40 +154,6 @@ export const Wordlist = () => {
       </StyledListContainer>
     </StyledMain>
   )
-}
+})
 
-/*
-<StyledListContainerHeader>
-          {isVisible ? (
-            <>
-              <h2>Список слов</h2>
-              <StyledStartTraining onClick={handleStartTraining}>
-                Тренироваться
-              </StyledStartTraining>
-            </>
-          )  : (
-            <>
-              <h2>Режим тренировки</h2>
-              <StyledStartTraining onClick={handleStopTraining}>
-                Закончить тренировку
-              </StyledStartTraining>
-            </>  
-          )}       
-        </StyledListContainerHeader>
 
-{isVisible ?
-          <StyledList>
-            <HeaderTable />
-            <InputTable 
-              inputValues={inputValues} 
-              onInputChange={handleInputChange}
-              onClearInputs={handleClearInputs}
-              onSaveWord={handleSaveWord}
-            />
-            <AddingWords words={words} />
-          </StyledList>
-          : <StyledCardWrap>
-              <CardContainer words={words} />
-            </StyledCardWrap>
-        }
-*/

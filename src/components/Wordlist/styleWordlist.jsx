@@ -9,7 +9,7 @@ export const StyledMain = styled.main`
 export const StyledListContainer = styled.div`
   max-width: 1060px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding: 30px 5px 0 5px;
 `
 
 export const StyledList = styled.div`
@@ -18,22 +18,6 @@ export const StyledList = styled.div`
   margin-top: 20px;
 `
 
-/*export const StyledListContainerHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-`
-export const StyledStartTraining = styled.button`
-  border: none;
-  background: none;
-  font-size: 16px;
-
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-`*/
 export const StyledCardWrap = styled.div`
   display: flex;
   justify-content: center;
