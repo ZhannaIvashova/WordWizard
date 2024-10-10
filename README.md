@@ -1,5 +1,7 @@
 # WordWizard - сервис по изучению английских слов
 
+Слова в таблицу на главной странице, загружаются из БД при get-запросе к API https://itgirlschool.justmakeit.ru/api/words/. Есть возможность добавления, удаления, редактирования слов. Так же есть режим тренировки слов по карточкам.
+
 ## Основные технологии
 
 - JS
@@ -7,6 +9,7 @@
 - React
 - Vite
 - Styled-components
+- MobX
 - React gh-pages
   (npm install --save-dev gh-pages)
 
