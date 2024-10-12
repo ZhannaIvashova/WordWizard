@@ -13,8 +13,8 @@ class WordsStore {
 
   fetchWords = () => {
     this.loading = true;
-
-    fetch('/api/words')
+    //для локального сервера fetch('/api/words')
+    fetch(`${import.meta.env.VITE_API_URL}/words`)
       .then((response) => {
         console.log(response)
         if (!response.ok) {
@@ -43,7 +43,8 @@ class WordsStore {
   addWord = (newWord) => {
     console.log('addWord', newWord);
     console.log('JSON.stringify', JSON.stringify(newWord));
-    fetch('/api/words/add', {
+    //fetch('/api/words/add'
+    fetch(`${import.meta.env.VITE_API_URL}/words/add`, {
       method: "POST",
       body: JSON.stringify(newWord),
       headers: {
@@ -69,7 +70,8 @@ class WordsStore {
 
 
   deleteWord = (id) => {
-    fetch(`/api/words/${id}/delete`, {
+    //fetch(`/api/words/${id}/delete`
+    fetch(`${import.meta.env.VITE_API_URL}/words/${id}/delete`, {
       method: "POST",
     })
       .then(response => response.json())
@@ -84,7 +86,8 @@ class WordsStore {
 
 
   editWord = (newEditedWord, id) => {
-    fetch(`/api/words/${id}/update`, {
+    //fetch(`/api/words/${id}/update`
+    fetch(`${import.meta.env.VITE_API_URL}/words/${id}/update`, {
       method: "POST",
       body: JSON.stringify(newEditedWord),
       headers: {
