@@ -48,7 +48,8 @@ class WordsStore {
       method: "POST",
       body: JSON.stringify(newWord),
       headers: {
-        "Content-Type": "application/json; charset=UTF-8"
+        "Content-Type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*"
       }
     })
       .then((response) => {
