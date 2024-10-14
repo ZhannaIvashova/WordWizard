@@ -2,7 +2,7 @@
   "name": "wordwizard",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ZhannaIvashova.github.io/WordWizard",
+  "homepage": "https://ZhannaIvashova.github.io/WordWizard/",
   "type": "module",
   "scripts": {
     "dev": "vite",
