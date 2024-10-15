@@ -46,10 +46,10 @@ class WordsStore {
     //fetch('/api/words/add'
     fetch(`${import.meta.env.VITE_API_URL}/words/add`, {
       method: "POST",
+      mode: "cors",
       body: JSON.stringify(newWord),
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*"
+        "Content-Type": "application/json; charset=UTF-8"
       }
     })
       .then((response) => {
