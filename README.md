@@ -17,6 +17,9 @@
 
 https://zhannaivashova.github.io/WordWizard/
 
+Не возможен post-запрос на добавление в БД при открытии проекта на gh-pages,
+при локальном развертывании проекта - доступен весь функционал.
+
 ## Запуск проекта
 
 - Клонировать репозиторий
@@ -33,6 +36,8 @@ git clone https://github.com/ZhannaIvashova/WordWizard.git
 npm install
 
 ```
+
+- Перейти в файл package.json и изменить 'homepage' для деплоя проекта на gh-pages.
 
 - Запустить проект
 
